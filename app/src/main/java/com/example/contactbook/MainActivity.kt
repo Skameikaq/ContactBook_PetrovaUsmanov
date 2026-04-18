@@ -31,8 +31,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-private fun callPhoneNumber(context: Context, phoneNumber: String) {
+fun callPhoneNumber(context: Context, phoneNumber: String) {
     val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
     if (intent.resolveActivity(context.packageManager) != null) {
         context.startActivity(intent)
@@ -41,8 +40,7 @@ private fun callPhoneNumber(context: Context, phoneNumber: String) {
     }
 }
 
-
-private fun sendEmail(context: Context, email: String, subject: String) {
+fun sendEmail(context: Context, email: String, subject: String) {
     val intent = Intent(Intent.ACTION_SENDTO).apply {
         data = Uri.parse("mailto:")
         putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
@@ -55,8 +53,7 @@ private fun sendEmail(context: Context, email: String, subject: String) {
     }
 }
 
-
-private fun showOnMap(context: Context, latitude: Double, longitude: Double, label: String) {
+fun showOnMap(context: Context, latitude: Double, longitude: Double, label: String) {
     val geoUri = Uri.parse("geo:0,0?q=$latitude,$longitude($label)")
     val intent = Intent(Intent.ACTION_VIEW, geoUri)
     if (intent.resolveActivity(context.packageManager) != null) {
@@ -66,8 +63,7 @@ private fun showOnMap(context: Context, latitude: Double, longitude: Double, lab
     }
 }
 
-
-private fun shareContact(context: Context, text: String, chooserTitle: String) {
+fun shareContact(context: Context, text: String, chooserTitle: String) {
     val sendIntent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
         putExtra(Intent.EXTRA_TEXT, text)
@@ -84,7 +80,6 @@ private fun shareContact(context: Context, text: String, chooserTitle: String) {
 fun ContactBookApp() {
     val context = LocalContext.current
 
-
     val titleContactBook = stringResource(R.string.title_contact_book)
     val titleOurContacts = stringResource(R.string.title_our_contacts)
     val phoneNumber = stringResource(R.string.phone_number)
@@ -99,7 +94,6 @@ fun ContactBookApp() {
     val buttonShare = stringResource(R.string.button_share)
     val labelPhone = stringResource(R.string.label_phone)
     val labelEmail = stringResource(R.string.label_email)
-
 
     val latitude = 60.0237
     val longitude = 30.2289
@@ -120,7 +114,6 @@ fun ContactBookApp() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-
             Text(
                 text = titleContactBook,
                 fontSize = 32.sp,
@@ -128,7 +121,6 @@ fun ContactBookApp() {
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.padding(bottom = 48.dp)
             )
-
 
             Card(
                 modifier = Modifier
@@ -160,12 +152,10 @@ fun ContactBookApp() {
                 }
             }
 
-
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
-
                 Button(
                     onClick = { callPhoneNumber(context, phoneNumber) },
                     modifier = Modifier
@@ -186,7 +176,6 @@ fun ContactBookApp() {
                         )
                     }
                 }
-
 
                 Button(
                     onClick = { sendEmail(context, email, emailSubject) },
@@ -209,7 +198,6 @@ fun ContactBookApp() {
                     }
                 }
 
-
                 Button(
                     onClick = { showOnMap(context, latitude, longitude, officeLabel) },
                     modifier = Modifier
@@ -230,7 +218,6 @@ fun ContactBookApp() {
                         )
                     }
                 }
-
 
                 Button(
                     onClick = { shareContact(context, shareText, chooserTitle) },
@@ -253,6 +240,23 @@ fun ContactBookApp() {
                     }
                 }
             }
+        }
+    }
+}
+
+@Preview(
+    name = "Contact Book - Light Theme",
+    showBackground = true,
+    backgroundColor = 0xFFFFFFFF
+)
+@Composable
+private fun ContactBookAppPreview() {
+    MaterialTheme {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            ContactBookApp()
         }
     }
 }
