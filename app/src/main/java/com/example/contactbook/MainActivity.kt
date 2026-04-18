@@ -256,6 +256,3 @@ fun ContactBookApp() {
         }
     }
 }
-
-
-}
