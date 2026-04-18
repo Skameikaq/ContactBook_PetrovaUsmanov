@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Контактная книга</string>
+
+
+    <string name="title_contact_book">Контактная книга</string>
+    <string name="title_our_contacts">📞 Наши контакты</string>
+
+
+    <string name="phone_number">+7 (495) 123-45-67</string>
+    <string name="email_address">contact@example.com</string>
+    <string name="email_subject">Обращение</string>
+    <string name="office_label">Наш офис</string>
+
+
+    <string name="share_contact_text">Контакт: +7 (495) 123-45-67, contact@example.com</string>
+    <string name="share_chooser_title">Поделиться через...</string>
+
+
+    <string name="button_call">Позвонить</string>
+    <string name="button_email">Написать email</string>
+    <string name="button_map">Показать офис на карте</string>
+    <string name="button_share">Поделиться контактом</string>
+
+
+    <string name="error_no_phone_app">Нет приложения для звонков</string>
+    <string name="error_no_email_app">Нет приложения для отправки email</string>
+    <string name="error_no_map_app">Нет приложения для карт</string>
+    <string name="error_no_share_app">Нет приложения для отправки</string>
+
+
+    <string name="label_phone">Телефон:</string>
+    <string name="label_email">Email:</string>
+</resources>
